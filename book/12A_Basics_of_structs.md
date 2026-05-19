@@ -568,8 +568,8 @@ can be divided into:
     `ptr = *e;`      // assignment
 
 ## 12.11 Struct alignment
-By aligning certain member fields of structs to 64 bit, we can make memory allocation cache-aligned on 64 bit systems. This can also be done for global variables.  
-The **#align** directive takes care of aligning struct member fields relative to the start of the struct. If the start is 64 bit aligned, and a member field has #align 64, then this field will also be 64 bit aligned. The same goes for `#align 32` and `#align 16`. It also works for declarations on the stack.
+By aligning certain member fields of structs to 64 byte, we can make memory allocation cache-aligned on 64 bit systems. This can also be done for global variables.  
+The **#align** directive takes care of aligning struct member fields relative to the start of the struct. If the start is 64 byte aligned, and a member field has #align 64, then this field will also be 64 byte aligned. The same goes for `#align 32` and `#align 16`. It also works for declarations on the stack.
 The start of the struct must be #align-ed correctly, otherwise it won't work. 
 This enhances memory efficiency and reduces cache misses for cache-sensitive data-structures. Use it when you want to do SIMD (see § 28) or you need something with a bigger alignment. 
 It is used in the following example:
@@ -600,7 +600,7 @@ main :: () {
 }
 ```
 
-The `Accumulator.accumulation` field and `global_var` in lines (1) and (2) are 64 bit cache-aligned. Line (3) shows that indeed the address of `global_var` is divisible by 64. An instance of a struct like defined in (1B) is also 64 bit-aligned, see (4B).  
+The `Accumulator.accumulation` field and `global_var` in lines (1) and (2) are 64 byte cache-aligned. Line (3) shows that indeed the address of `global_var` is divisible by 64. An instance of a struct like defined in (1B) is also 64 byte-aligned, see (4B).  
 `#align` is often accompanied by the directive **#no_padding** as in (1C), meaning no additional empty bytes are added to align with word-size (this only seems to work when each member has **#align 1** added).
 (For a good explanation of what padding is, see [Structure Padding in C](https://www.javatpoint.com/structure-padding-in-c))
 
