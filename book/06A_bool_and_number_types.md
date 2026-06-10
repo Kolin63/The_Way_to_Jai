@@ -81,7 +81,7 @@ A breakpoint was hit, but no debugger is attached.
 */
 ```
 
-Instead of always printing out if a bool expression is true of false, there is a handy shortcut with the **assert** procedure, defined in module _Basic_.
+Instead of always printing out if a bool expression is true or false, there is a handy shortcut with the **assert** procedure, defined in module _Basic_.
 
 `assert` takes an expression, and when this is true, nothing happens. When the expression is false, an assert stops the program execution with **Assertion failed** and the line where it happened, and prints out a stack trace. A message parameter after the expression is optional, but when there is one, it is also printed out (see the example in line (1)).
 So, assert is like: "verify this condition is still true at that point in the program, if not, stop it, because this is not normal".
