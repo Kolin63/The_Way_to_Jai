@@ -457,7 +457,7 @@ The number of %'s and supplied values must be the same. If not you get a warning
 The format string requires 2 arguments, but 3 arguments are given.
 In this case only the first two values are displayed.
 
-If you want to print a literal %, replace the second % with \% as in line (4). To separate 2 arguments, you can always puy a 0 between the %, like so: `%0%` accepts two arguments. 
+If you want to print a literal %, replace the second % with \% as in line (4). To separate 2 arguments, you can always put a 0 between the %, like so: `%0%` accepts two arguments. 
 
 Although it is nearly always discarded, print returns the number of bytes printed, as shown in line (4B).
 
