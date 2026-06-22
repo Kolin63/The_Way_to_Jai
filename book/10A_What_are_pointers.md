@@ -14,15 +14,15 @@ Example:
         b := *a;
         c := b.*;
 
-A pointer to a variable contains the memory address of that variable, it _points to_ the variable. So it is a  reference to a memory location, which can be on the stack or on the heap (see § 4D). If var is the variable,  then a pointer ptr to var is written with a * as follows: 
+A pointer to a variable contains the memory address of that variable, it _points to_ the variable. So it is a  reference to a memory location, which can be on the stack or on the heap (see § 4D). If var is the variable,  then a pointer ptr to var is written with a * as follows:
 
 ```jai
 ptr = *var
 ```
 
-* is sometimes called the **address-of** operator.  
-You can visualize it as in the following image:  
-![Pointer diagram](https://github.com/Ivo-Balbaert/The_Way_to_Jai/tree/main/images/pointers.jpg)  
+* is sometimes called the **address-of** operator.
+You can visualize it as in the following image:
+![Pointer diagram](images/pointers.jpg)
 Here you see a pointer ptr in the blue box (left) which has a value 0x123. This is the memory address of the variable var in the green box (right). The variable has value 100. Notice that the pointer itself has an address, here 0x155.
 
 > Often the name of a pointer starts with ptr for readability, but this is by no means mandatory.
@@ -37,7 +37,7 @@ See *10.1_pointers.jai*:
 #import "Basic";
 
 main :: () {
-    a : int = 42; 
+    a : int = 42;
     b : *int;     // (1A) declaration: b is a pointer to an integer.
     b = *a;       // (1B) initialize the pointer: point b at a.
     print("Value of a is %, address of a is %\n", a, *a);
@@ -50,18 +50,18 @@ main :: () {
     // => Value c points to is 42, which is located at address of a: 54_8d14_fb50
     << c = 108; // (4B)
     print("Value c points to is now %\n", << c); // => Value c points to is now 108
- 
+
     // null pointer:
     d: *u32; // (5)
     print("Value of d is %\n", d); // => Value of d is null
     // print("d is %\n", << d); // => program crashes at run-time!
     print("Type of null is %\n", type_of(null)); // (6) => Type of null is *void
-   
+
     // void pointer:
     ptr: *void; // (7)
     print("ptr contains %\n", ptr); // => ptr contains null
     print("Value ptr is %\n", << ptr); // => Value ptr is void
-   
+
     // (8) pointers to pointers:
     a2: int = 3;
     b2: *int = *a2;
@@ -98,20 +98,20 @@ In lines (1A-B) we first declare and then initialize a pointer to an int. b cont
 To obtain the value pointed to by a pointer (often called _dereferencing_ the pointer), use the **<<** notation on the pointer, like in C (see line (2)):
 
 ```jai
-val = << ptr;   
+val = << ptr;
 ```
-In some cases dereferencing happens automatically when using the pointer itself, to simplify the syntax.  
-From line (3) we see that the type of b is `*s64`.  
+In some cases dereferencing happens automatically when using the pointer itself, to simplify the syntax.
+From line (3) we see that the type of b is `*s64`.
 In line (4) we see how this type can be inferred with the shorter := notation. We also see that in line (4B) that you can change the value by using the dereference operator as left hand side:
 
 ```jai
-<< ptr = new_val;   
+<< ptr = new_val;
 ```
 The value at the address ptr points to is changed, but the address ptr contains stays the same.
 
-What is the value of an uninitialized pointer (in other words:a pointer that doesn't yet have a memory address assigned to it)? Let's find out.  
-In line (5) we see that the value of the uninitialized pointer d with type *u32 is **null**.  null means: d has no address to point to.  
-So the default (zero) value of a pointer is null: after line (1A) b has value null. After line (1B) however b is no longer null, it now contains the address of the variable a.  
+What is the value of an uninitialized pointer (in other words:a pointer that doesn't yet have a memory address assigned to it)? Let's find out.
+In line (5) we see that the value of the uninitialized pointer d with type *u32 is **null**.  null means: d has no address to point to.
+So the default (zero) value of a pointer is null: after line (1A) b has value null. After line (1B) however b is no longer null, it now contains the address of the variable a.
 
 null is a value, so what is the type of null? This is answered in line (6), it is `*void`, which indeed says it is a pointer to nothing (void).
 _The only thing you can assign null to is a pointer type_; you can't assign null to ints, structs, arrays, strings, or any other type.
@@ -122,9 +122,9 @@ You can even declare a variable ptr as a void pointer, like in line (7). This me
 In line (9), we make a New(int). `New` is a procedure defined in module _Basic_ that can take any type, construct an instance of it, and return a pointer to it (see line (10)).
 New allocates memory on the heap, so you have to free it yourself, as done in line (11).
 
-> A pointer to data of unknown type has type *void.  
+> A pointer to data of unknown type has type *void.
 
-*void can be casted to any type, and it has the same functionality as in C. 
+*void can be casted to any type, and it has the same functionality as in C.
 
 Taking a pointer and then dereferencing cancels each other out:
 ```
@@ -136,8 +136,8 @@ Some languages (like Java) have _references_ instead of pointers. References are
 
 
 ## 10.2 Pointers to pointer
-We saw that a pointer has also an address, so nothing prevents you from having a pointer to a pointer. This can even be several levels of _indirection_ deep, as lines (8) and following show. 
-To get to the value of a three-level pointer, you have to dereference three times:  
+We saw that a pointer has also an address, so nothing prevents you from having a pointer to a pointer. This can even be several levels of _indirection_ deep, as lines (8) and following show.
+To get to the value of a three-level pointer, you have to dereference three times:
 
 ```jai
     d2: ***int = *c2;
@@ -145,7 +145,7 @@ To get to the value of a three-level pointer, you have to dereference three time
 ```
 
 ## 10.3 Dereferencing a null pointer
-**Danger zone: attempting to dereference a null pointer makes the program crash at run-time.**  
+**Danger zone: attempting to dereference a null pointer makes the program crash at run-time.**
 When this happens in a program, there clearly is a bug, because the pointer didn't point to any value. So Jai's behavior is to stop the program and print out a stack trace where the problem occurred.
 
 See *10.2_dereference_a_null_pointer.jai*:
@@ -154,7 +154,7 @@ See *10.2_dereference_a_null_pointer.jai*:
 #import "Basic";
 
 main :: () {
-    // the explicit null assignment is not needed because null is the zero-value for pointers  
+    // the explicit null assignment is not needed because null is the zero-value for pointers
     // c : *int = null;
     c : *int;
     // ... lots of code
@@ -201,16 +201,16 @@ Again, the first two lines tell you enough.
 
 A program that crashes at run-time when used by clients is a developer's nightmare. So, apart from extensive testing to find such bugs, what can we do else to avoid or trace them?
 
-If you can track the bug to a certain part of the code, you can try to print out the pointer to see if it equals null, as in line (1):   
+If you can track the bug to a certain part of the code, you can try to print out the pointer to see if it equals null, as in line (1):
 `print("%\n", c); // (1) => null`
 Or better, use an `assert` as in line (2):
-which gives the output:  
+which gives the output:
 
 ```
 d:/Jai/The_Way_to_Jai/examples/10/10.2_dereference_a_null_pointer.jai:9,3: Assertion failed!
 
 Stack trace:
-c:/jai/modules/Preload.jai:333: default_assertion_failed    
+c:/jai/modules/Preload.jai:333: default_assertion_failed
 c:/jai/modules/Basic/module.jai:74: assert
 d:/Jai/The_Way_to_Jai/examples/10/10.2_dereference_a_null_pointer.jai:9: main
 ```
@@ -252,7 +252,7 @@ main :: () {
 }
 ```
 
-The variable a in the code snippet above is of type *s64, default initialized to 0. Then we give it the value 5. In line (1) its memory is freed, at which point it is called a _dangling pointer_: it should no longer point to a value memory location. However in Jai it still knows its address and contained value. If you really want to be sure the value has been erased, you can assign the `null` value to the pointer, as in line (2). 
+The variable a in the code snippet above is of type *s64, default initialized to 0. Then we give it the value 5. In line (1) its memory is freed, at which point it is called a _dangling pointer_: it should no longer point to a value memory location. However in Jai it still knows its address and contained value. If you really want to be sure the value has been erased, you can assign the `null` value to the pointer, as in line (2).
 
 ## 10.5 Casting to pointer types
 Because a pointer type is like any other type, you can cast a pointer variable to a pointer type, like this:
