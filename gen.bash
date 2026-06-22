@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 pandoc book/*.md \
-  -o ~/html/test.docx \
+  -o out.docx \
   --from gfm \
   --to docx
