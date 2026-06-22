@@ -313,6 +313,7 @@ It also needs three color Vector4 instances, which are of the form:
 red equal to 0 means no red, equal to 1 means fully red, and so on.
 
 Line (2) is needed for drawing the colors, and creating the nice shading effect, seen in
+
 ![Colored triangle with Simp](images/colored_triangle.png).
 
 
@@ -990,7 +991,9 @@ main :: () {
 }
 ```
 
-The window is shown in ![A screen with tiles](images/tiles.png).
+The window is shown in
+
+![A screen with tiles](images/tiles.png).
 
 
 ## 33.11 How to play a sound with module *Sound_Player*

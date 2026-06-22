@@ -495,7 +495,9 @@ main :: () {}
 In line (1) we load the file `build_gui.jai`, where all the graphical and thread magic happens. In line (2), the SDL window is shown. In line (3) we slow down the compiling process by waiting 10 ms between each compiler message. Line (4) makes the GUI thread wait even more. So don't think, why is the compiler now so slow? This effect is purely artificial, so that we can clearly view our windows.
 
 Here are screenshots of the windows:
+
 ![Compiling](images/compiling.png)
+
 ![Success](images/success.png)
 
 The loaded file `build_gui.jai` contains the following code:

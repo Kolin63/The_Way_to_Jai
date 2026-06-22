@@ -20,6 +20,7 @@ The compiler does not process code in a single-pass, in a lexically ordered way 
 The compiler uses a hand-written _recursive descent top-down parser_. It runs _multi-threaded_ as a kind of job system.
 
 Here is an overall schema of the compiler architecture:
+
 ![Compiler schema](images/compiler_schema.png)
 
 As we see in the diagram, Jai source code is first converted to an _abstract syntax tree_ (AST), which is then converted to an internal _byte-code_.

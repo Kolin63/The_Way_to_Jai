@@ -166,7 +166,9 @@ main :: () {
 ```
 
 The comments should be enough to understand the code.
-See a screenshot ![here](images/simp_pong.png).
+See a screenshot
+
+![here](images/simp_pong.png).
 
 ## 52.2  A version using Raylib
 (For an introduction to Raylib: see § 35.1)
@@ -360,5 +362,7 @@ DrawText :: (text:string, alignment:TextAlignment, posX:s32, posY:s32, fontSize 
 }
 ```
 
-See a screenshot ![here](images/jai_raylib_pong.png).
+See a screenshot
+
+![here](images/jai_raylib_pong.png).
 

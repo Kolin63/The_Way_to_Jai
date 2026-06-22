@@ -15,7 +15,9 @@ It works on both Windows and Linux.
 
 With the settings button at the top left, you first choose an AI chess engine (for example ceij), and then start a new game where either white or black gets played by the AI.
 
-See a screenshot ![here](images/chess_game.png).
+See a screenshot
+
+![here](images/chess_game.png).
 
 There is also a version for the Chinese Chess game [Xiangqi](https://github.com/danieltan1517/xiangqi-jai).
 
@@ -27,7 +29,9 @@ It was written in the summer of 2022. You can see it in action [here](https://ts
 ## 65.3  Sokoban mini Game: Piotr Pushowski and the Crates
 This game is written by dafu and published [here](https://badcastle.itch.io/piotr-pushowski) on Mar 17 2023.
 It works on both Windows and Linux. The source is available on GitHub [here](https://github.com/daafu/sokoban).
-Here is a ![screenshot](images/piotr_sokoban.png).
+Here is a
+
+![screenshot](images/piotr_sokoban.png).
 
 ## 65.4  Ark-VCS
 Ark is a new Versioning Control System with Games in mind, an alternative to perforce and git, written by Nuno Afonso (nafonso).
